@@ -990,9 +990,11 @@
 
   // ─── Track Page View ──────────────────────────
   function trackPageView() {
-  db.from('analytics').insert({
-    type: 'page_view', page: '/'
-  }).catch(() => {});
+  try {
+    db.from('analytics').insert({
+      type: 'page_view', page: '/'
+    });
+  } catch(e) {}
 }
   // ─── Old modal functions (fallback) ──────────
   function openModal(id) {
