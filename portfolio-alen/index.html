@@ -989,12 +989,11 @@
   }
 
   // ─── Track Page View ──────────────────────────
-  async function trackPageView() {
-    await db.from('analytics').insert({
-      type: 'page_view', page: '/', user_agent: navigator.userAgent, referrer: document.referrer || null
-    }).catch(() => {});
-  }
-
+  function trackPageView() {
+  db.from('analytics').insert({
+    type: 'page_view', page: '/'
+  }).catch(() => {});
+}
   // ─── Old modal functions (fallback) ──────────
   function openModal(id) {
     const el = document.getElementById('modal-' + id);
